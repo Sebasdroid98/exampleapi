@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Interfaces\NotaInterface;
+use App\Interfaces\NotaServiceImplement;
 use App\Services\NotaService;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +14,7 @@ class NotaServiceProvider extends ServiceProvider
     public function register(): void
     {
         // Se relaciona la interfaz con la implementación
-        $this->app->bind(NotaInterface::class, NotaService::class);
+        $this->app->bind(NotaServiceImplement::class, NotaService::class);
     }
 
     /**

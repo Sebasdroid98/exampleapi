@@ -1,7 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\V1;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\V1\NotaResource;
 use App\Models\Api\V1\NotaModel;
 use App\Services\NotaService;
 use Illuminate\Http\Request;
@@ -27,7 +29,7 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->notaService->store($request);
     }
 
     /**

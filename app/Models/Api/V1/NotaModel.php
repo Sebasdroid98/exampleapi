@@ -9,4 +9,6 @@ class NotaModel extends Model
 {
     /** @use HasFactory<\Database\Factories\Api\V1\NotaModelFactory> */
     use HasFactory;
+    
+    protected $table = 'notas';
 }
