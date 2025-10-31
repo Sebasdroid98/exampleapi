@@ -17,7 +17,10 @@ class NotaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'titulo' => $this->faker->sentence,
+            'contenido' => $this->faker->paragraph,
+            'etiquetas' => $this->faker->words(3, true),
+            'color' => $this->faker->hexColor,
         ];
     }
 }

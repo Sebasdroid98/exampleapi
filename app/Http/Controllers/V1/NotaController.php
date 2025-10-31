@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\V1;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\V1\NotaResource;
-use App\Models\Api\V1\NotaModel;
+use App\Http\Requests\V1\NotaStoreRequest;
+use App\Models\Api\V1\Nota;
 use App\Services\NotaService;
 use Illuminate\Http\Request;
 
@@ -21,29 +21,41 @@ class NotaController extends Controller
      */
     public function index()
     {
-        return $this->notaService->obtenerNotas();
+        return $this->notaService->obtenerNotas()
+            ->additional([
+                'message' => 'Notas obtenidas con éxito',
+                'status' => 200,
+            ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(NotaStoreRequest $request)
     {
-        return $this->notaService->store($request);
+        return $this->notaService->registrarNota($request)
+            ->additional([
+                'message' => 'Nota registrada con éxito',
+                'status' => 200,
+            ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(NotaModel $notaModel)
+    public function show(int $id)
     {
-        //
+        return $this->notaService->obtenerNotaPorId($id)
+            ->additional([
+                'message' => 'Nota obtenida con éxito',
+                'status' => 200,
+            ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, NotaModel $notaModel)
+    public function update(Request $request, Nota $nota)
     {
         //
     }
@@ -51,7 +63,7 @@ class NotaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(NotaModel $notaModel)
+    public function destroy(Nota $nota)
     {
         //
     }

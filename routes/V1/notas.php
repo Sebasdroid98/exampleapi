@@ -9,7 +9,7 @@ use App\Http\Controllers\V1\NotaController;
 Route::controller(NotaController::class)->group(function () {
     Route::get('v1/notas', 'index');
     Route::post('v1/notas', 'store');
-    Route::get('v1/notas/{notaModel}', 'show');
-    Route::put('v1/notas/{notaModel}', 'update');
-    Route::delete('v1/notas/{notaModel}', 'destroy');
+    Route::get('v1/notas/{nota}', 'show');
+    Route::put('v1/notas/{nota}', 'update');
+    Route::delete('v1/notas/{nota}', 'destroy');
 })->middleware(['api','auth:sanctum']);
